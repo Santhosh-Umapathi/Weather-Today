@@ -14,6 +14,7 @@
 		CC85DDCF0129FF1FB4605308 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		56BCD95EDEF94B66B0D459D3 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FAA894E3A2240FEB43149C8 /* BootSplash.storyboard */; };
 		4864150FF7F14CF1ADB07901 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 699AAC5BB92445EBAA0228DF /* Colors.xcassets */; };
+		FD464A8FB3494BF4B77289D1 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F077363422ED4457927F9B70 /* Inter-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		8FAA894E3A2240FEB43149C8 /* BootSplash.storyboard */ = {isa = PBXFileReference; name = "BootSplash.storyboard"; path = "weathertoday/BootSplash.storyboard"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		699AAC5BB92445EBAA0228DF /* Colors.xcassets */ = {isa = PBXFileReference; name = "Colors.xcassets"; path = "weathertoday/Colors.xcassets"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = folder.assetcatalog; explicitFileType = undefined; includeInIndex = 0; };
+		F077363422ED4457927F9B70 /* Inter-Regular.ttf */ = {isa = PBXFileReference; name = "Inter-Regular.ttf"; path = "../assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				E6398916E0EC4209BDC40D2A /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -103,6 +106,15 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		E6398916E0EC4209BDC40D2A /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				F077363422ED4457927F9B70 /* Inter-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -169,6 +181,7 @@
 				CC85DDCF0129FF1FB4605308 /* PrivacyInfo.xcprivacy in Resources */,
 				56BCD95EDEF94B66B0D459D3 /* BootSplash.storyboard in Resources */,
 				4864150FF7F14CF1ADB07901 /* Colors.xcassets in Resources */,
+				FD464A8FB3494BF4B77289D1 /* Inter-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
