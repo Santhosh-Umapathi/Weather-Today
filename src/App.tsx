@@ -15,7 +15,10 @@ const App = () => {
   }, []);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>App</Text>
+      <Text style={styles.text}>Hello ABC Font</Text>
+      <Text style={{fontFamily: 'Inter-Regular', fontSize: 20}}>
+        Hello ABC Font
+      </Text>
     </View>
   );
 };
@@ -28,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    fontSize: 16,
+    fontSize: 20,
   },
 });
 
