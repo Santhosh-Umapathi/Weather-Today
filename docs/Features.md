@@ -37,9 +37,9 @@
 
 Additional improvements which are part of the implementation
 
-| Additional Improvements        | Status |
-| ------------------------------ | ------ |
-| Splash Screen, Logo, App Icons | ✅     |
-| Performance Optimizations      | ✅     |
-| Code Readability (Clean Code)  | ✅     |
-| Local Storage (MMKV)           | ✅     |
+| Additional Improvements                      | Status |
+| -------------------------------------------- | ------ |
+| Splash Screen, Logo, App Icons, Custom Fonts | ✅     |
+| Performance Optimizations                    | ✅     |
+| Code Readability (Clean Code)                | ✅     |
+| Local Storage (MMKV)                         | ✅     |
