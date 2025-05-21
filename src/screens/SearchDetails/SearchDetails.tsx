@@ -3,7 +3,7 @@ import {View, Text, StyleSheet} from 'react-native';
 
 type TProps = {};
 
-export const Home = (props: TProps) => {
+export const SearchDetails = (props: TProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Home</Text>
