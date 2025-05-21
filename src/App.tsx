@@ -1,6 +1,13 @@
 import React, {useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import BootSplash from 'react-native-bootsplash';
+import {
+  Cloudy,
+  PartialRain,
+  PartialSun,
+  PartialSunnyRain,
+  Sunny,
+} from './components/icons';
 
 const App = () => {
   useEffect(() => {
@@ -19,6 +26,11 @@ const App = () => {
       <Text style={{fontFamily: 'Inter-Regular', fontSize: 20}}>
         Hello ABC Font
       </Text>
+      <Cloudy width={50} height={50} />
+      <PartialRain width={50} height={50} />
+      <PartialSun width={50} height={50} />
+      <PartialSunnyRain width={50} height={50} />
+      <Sunny width={50} height={50} />
     </View>
   );
 };
