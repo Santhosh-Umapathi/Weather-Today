@@ -9,7 +9,7 @@ const App = () => {
     };
 
     init().finally(async () => {
-      // await BootSplash.hide({fade: true});
+      await BootSplash.hide({fade: true});
       console.log('BootSplash has been hidden successfully');
     });
   }, []);
