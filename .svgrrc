@@ -1,0 +1,19 @@
+{
+  "icon": true,
+  "outDir": "./src/components/icons",
+  "memo": false,
+  "ignoreExisting": true,
+  "typescript": true,
+  "svgProps": {
+    "width": "{props.width}",
+    "height": "{props.height}",
+    "fill": "none"
+  },
+  "replaceAttrValues": {
+    "#333": "{props.color}",
+    "#000": "{props.color}",
+    "#fff": "none"
+  },
+  "prettier": true,
+  "prettierConfig": "./.prettierrc.js"
+}

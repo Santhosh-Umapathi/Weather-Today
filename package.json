@@ -9,12 +9,15 @@
     "start": "react-native start",
     "reset": "react-native start --reset-cache",
     "pods": "npx pod-install",
-    "test": "jest"
+    "test": "jest",
+    "svgr": "npx @svgr/cli ./assets/svg --icon --native"
   },
   "dependencies": {
+    "@svgr/cli": "^8.1.0",
     "react": "19.0.0",
     "react-native": "0.79.2",
-    "react-native-bootsplash": "^6.3.8"
+    "react-native-bootsplash": "^6.3.8",
+    "react-native-svg": "^15.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
