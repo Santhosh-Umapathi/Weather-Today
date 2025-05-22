@@ -9,7 +9,12 @@ import {
   TGetWeather,
   TWeatherBE,
 } from './weather.api.types';
-import {mapCoordinatesToDTO} from '../../dto';
+import {
+  mapCoordinatesToDTO,
+  mapWeatherToDTO,
+  mapForecastToDTO,
+  mapFullWeatherToDTO,
+} from '../../dto';
 
 // City Name to Coordinates
 const getCoordinates = async ({city}: TGetCoordinates) => {
@@ -37,8 +42,8 @@ const getCoordinates = async ({city}: TGetCoordinates) => {
   }
 };
 
-// Coordinates to Weather
-const getWeather = async ({lat, lon}: TGetWeather) => {
+// Coordinates to Current Weather
+const getCurrentWeather = async ({lat, lon}: TGetWeather) => {
   try {
     const response = await axios.get(OPEN_WEATHER_URLS.current, {
       headers: AXIOS_HEADERS,
@@ -48,7 +53,12 @@ const getWeather = async ({lat, lon}: TGetWeather) => {
       },
     });
 
-    const results = response.data as TWeatherBE;
+    const results = mapWeatherToDTO(response.data as TWeatherBE);
+
+    // No weather data found
+    if (!results) {
+      throw new Error('No weather data found');
+    }
 
     return results;
   } catch (error) {
@@ -68,7 +78,7 @@ const getForecast = async ({lat, lon}: TGetWeather) => {
       },
     });
 
-    const results = response.data as TForecastBE;
+    const results = mapForecastToDTO(response.data as TForecastBE);
 
     return results;
   } catch (error) {
@@ -77,6 +87,7 @@ const getForecast = async ({lat, lon}: TGetWeather) => {
   }
 };
 
+// Coordinates/City to Weather and Forecast
 export const getFullWeather = async ({lat, lon, city}: TGetFullWeather) => {
   try {
     // If city is provided, fetch coordinates first
@@ -93,11 +104,16 @@ export const getFullWeather = async ({lat, lon, city}: TGetFullWeather) => {
 
     // Fetch weather and forecast concurrently
     const [weather, forecast] = await Promise.all([
-      getWeather({lat, lon}),
+      getCurrentWeather({lat, lon}),
       getForecast({lat, lon}),
     ]);
 
-    return {weather, forecast};
+    const results = mapFullWeatherToDTO({
+      weather,
+      forecast,
+    });
+
+    return results;
   } catch (error) {
     console.error('Error fetching full weather:', error);
     throw error;
