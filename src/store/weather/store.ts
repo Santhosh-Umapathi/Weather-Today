@@ -4,7 +4,7 @@ import {state} from './state';
 import {TWeatherStore} from './types';
 
 // Weather store
-export const useWeatherStore = create<TWeatherStore>((set, get) => ({
+export const useWeatherStore = create<TWeatherStore>(set => ({
   ...state,
-  ...actions(set, get),
+  ...actions(set),
 }));

@@ -6,7 +6,7 @@ type TProps = {};
 export const Search = (props: TProps) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Home</Text>
+      <Text style={styles.text}>Search</Text>
     </View>
   );
 };

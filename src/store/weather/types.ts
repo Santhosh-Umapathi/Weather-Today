@@ -1,12 +1,23 @@
+import {TCoordinates} from '../../dto';
+
 //Types for Weather State
-export type TWeatherState = {};
+export type TWeatherState = {
+  location: TCoordinates | null;
+  isLocationEnabled: boolean | null;
+};
 
 //Types for Weather Actions
-export type TWeatherActions = {};
+export type TWeatherActions = {
+  setLocation: (location: TCoordinates) => void;
+  setIsLocationEnabled: (isLocationEnabled: boolean) => void;
+};
 
 //Types for Global Store
 export type TWeatherStore = TWeatherState & TWeatherActions;
 
+//------------------------------------------------------------------
+//MARK: Sub Types
+//------------------------------------------------------------------
 export type TSet = {
   (
     partial:
