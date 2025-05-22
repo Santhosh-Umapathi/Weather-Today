@@ -25,6 +25,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {OPEN_WEATHER_URLS, ROUTES} from '../../const';
 import {
+  CurrentWeather,
   Text,
   TWeatherDataCardProps,
   WeatherDailyCard,
@@ -34,6 +35,7 @@ import {
 import {formatDate, generateWeatherType, TWeatherType} from '../../helpers';
 import {colors} from '../../tokens';
 import LinearGradient from 'react-native-linear-gradient';
+import {styles} from './styles';
 
 type TProps = {};
 
@@ -52,16 +54,6 @@ export const Home = (props: TProps) => {
 
   const gradientColors =
     colors.weatherColors[generateWeatherType(data?.current.main.id || 0)];
-
-  const weatherIcon: {
-    [key in TWeatherType]: React.ReactElement;
-  } = {
-    sunny: <Sunny width={230} height={230} />,
-    cloudy: <Cloudy width={230} height={230} />,
-    partialRain: <PartialRain width={230} height={230} />,
-    partialSun: <PartialSun width={230} height={230} />,
-    partialSunnyRain: <PartialSunnyRain width={230} height={230} />,
-  };
 
   const weatherData: TWeatherDataCardProps[] = [
     {
@@ -120,45 +112,23 @@ export const Home = (props: TProps) => {
           </TouchableOpacity>
         </View>
 
-        <View
-          style={{
-            marginTop: 20,
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            paddingHorizontal: 24,
-          }}>
-          {weatherIcon[generateWeatherType(data?.current.main.id || 0)]}
-          <View style={{marginLeft: 8}}>
-            <Text
-              style={{
-                fontFamily: 'Inter-Regular',
-                fontSize: 50,
-                fontWeight: 'bold',
-              }}>
-              {data?.current.main.temperature.toFixed(0)}°C
-            </Text>
-            <Text
-              style={{
-                marginTop: 4,
-              }}>
-              {data?.current.main.weather}
-            </Text>
-          </View>
-        </View>
+        <CurrentWeather
+          {...{
+            id: data?.current.main.id,
+            temperature: data?.current.main.temperature,
+            weather: data?.current.main.weather,
+          }}
+        />
 
-        <View
-          style={{
-            marginTop: 20,
-            gap: 12,
-            paddingHorizontal: 24,
-          }}>
-          {weatherData.map(item => (
+        <View style={styles.weatherDataSection}>
+          {weatherData.map(({icon, title, value}) => (
             <WeatherDataCard
-              key={item.title}
-              icon={item.icon}
-              title={item.title}
-              value={item.value}
+              key={title}
+              {...{
+                icon,
+                title,
+                value,
+              }}
             />
           ))}
         </View>
