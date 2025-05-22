@@ -89,6 +89,7 @@ const getForecast = async ({lat, lon}: TGetWeather) => {
 
 // Coordinates/City to Weather and Forecast
 export const getFullWeather = async ({lat, lon, city}: TGetFullWeather) => {
+  console.log('get full weather');
   try {
     // If city is provided, fetch coordinates first
     if (city) {

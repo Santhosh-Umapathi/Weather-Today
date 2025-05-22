@@ -35,6 +35,7 @@ export const mapWeatherToDTO = (data: TWeatherBE): TWeather | null => {
     id: data.id.toString(),
     name: data.name,
     main: {
+      id: data.weather[0].id,
       temperature: data.main.temp,
       humidity: data.main.humidity,
       feelsLike: data.main.feels_like,

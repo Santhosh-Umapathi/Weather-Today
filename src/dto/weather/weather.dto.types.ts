@@ -7,6 +7,7 @@ export type TWeather = {
   id: string;
   name: string;
   main: {
+    id: number;
     temperature: number;
     humidity: number;
     windSpeed: number;
