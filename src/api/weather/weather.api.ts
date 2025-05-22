@@ -5,13 +5,14 @@ import {
   TCoordinatesBE,
   TForecastBE,
   TGetCoordinates,
+  TGetFullWeather,
   TGetWeather,
   TWeatherBE,
-} from './types';
-import {mapCoordinatesToDTO} from '../../dto/weather/weather.dto';
+} from './weather.api.types';
+import {mapCoordinatesToDTO} from '../../dto';
 
 // City Name to Coordinates
-export const getCoordinates = async ({city}: TGetCoordinates) => {
+const getCoordinates = async ({city}: TGetCoordinates) => {
   try {
     const response = await axios.get(OPEN_WEATHER_URLS.geo, {
       headers: AXIOS_HEADERS,
@@ -24,6 +25,11 @@ export const getCoordinates = async ({city}: TGetCoordinates) => {
     // Converting Data to ClientDTO
     const results = mapCoordinatesToDTO(response.data as TCoordinatesBE[]);
 
+    // No coordinates found
+    if (!results) {
+      throw new Error('No coordinates found');
+    }
+
     return results;
   } catch (error) {
     console.error('Error fetching coordinates:', error);
@@ -32,14 +38,7 @@ export const getCoordinates = async ({city}: TGetCoordinates) => {
 };
 
 // Coordinates to Weather
-export const getWeather = async ({lat, lon, city}: TGetWeather) => {
-  // If city is provided, fetch coordinates first
-  if (city) {
-    const coordinates = await getCoordinates({city});
-    lat = coordinates.lat;
-    lon = coordinates.lon;
-  }
-
+const getWeather = async ({lat, lon}: TGetWeather) => {
   try {
     const response = await axios.get(OPEN_WEATHER_URLS.current, {
       headers: AXIOS_HEADERS,
@@ -59,15 +58,8 @@ export const getWeather = async ({lat, lon, city}: TGetWeather) => {
 };
 
 // Coordinates to Forecast
-export const getForecast = async ({lat, lon, city}: TGetWeather) => {
+const getForecast = async ({lat, lon}: TGetWeather) => {
   try {
-    // If city is provided, fetch coordinates first
-    if (city) {
-      const coordinates = await getCoordinates({city});
-      lat = coordinates.lat;
-      lon = coordinates.lon;
-    }
-
     const response = await axios.get(OPEN_WEATHER_URLS.forecast, {
       headers: AXIOS_HEADERS,
       params: {
@@ -81,6 +73,33 @@ export const getForecast = async ({lat, lon, city}: TGetWeather) => {
     return results;
   } catch (error) {
     console.error('Error fetching forecast:', error);
+    throw error;
+  }
+};
+
+export const getFullWeather = async ({lat, lon, city}: TGetFullWeather) => {
+  try {
+    // If city is provided, fetch coordinates first
+    if (city) {
+      const coordinates = await getCoordinates({city});
+      lat = coordinates.lat;
+      lon = coordinates.lon;
+    }
+
+    // If lat/lon are not provided, throw an error early
+    if (!lat || !lon) {
+      throw new Error('Latitude and Longitude are required');
+    }
+
+    // Fetch weather and forecast concurrently
+    const [weather, forecast] = await Promise.all([
+      getWeather({lat, lon}),
+      getForecast({lat, lon}),
+    ]);
+
+    return {weather, forecast};
+  } catch (error) {
+    console.error('Error fetching full weather:', error);
     throw error;
   }
 };

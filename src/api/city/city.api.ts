@@ -1,16 +1,19 @@
 import axios from 'axios';
-import {CITIES_URL} from '../const';
+import {CITIES_URL} from '../../const';
+import {AXIOS_HEADERS} from '../../config';
+import {TCitiesBE} from './city.api.types';
+import {mapCitiesToDTO} from '../../dto';
 
 export const getCities = async () => {
   try {
     const response = await axios.get(CITIES_URL, {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
+      headers: AXIOS_HEADERS,
     });
 
-    return response;
+    // Convert to Client DTO
+    const results = mapCitiesToDTO(response.data as TCitiesBE);
+
+    return results;
   } catch (error) {
     console.error('Error fetching cities:', error);
     throw error;

@@ -6,13 +6,14 @@ export type TGetCoordinates = {
 };
 
 export type TGetWeather = {
-  lat?: number;
-  lon?: number;
-  city?: string;
+  lat: number;
+  lon: number;
 };
 
+export type TGetFullWeather = Partial<TGetWeather & TGetCoordinates>;
+
 //------------------------------------------------------------------
-//MARK: Data Types
+//MARK: Data Types - Server Response
 //------------------------------------------------------------------
 export type TCoordinatesBE = {
   name: string;
@@ -24,16 +25,16 @@ export type TCoordinatesBE = {
 };
 
 export type TWeatherBE = {
-  coord: Coord;
-  weather: Weather[];
+  coord: TCoord;
+  weather: TWeather[];
   base: string;
-  main: Main;
+  main: TMain;
   visibility: number;
-  wind: Wind;
-  rain: Rain;
-  clouds: Clouds;
+  wind: TWind;
+  rain: TRain;
+  clouds: TClouds;
   dt: number;
-  sys: Sys;
+  sys: TSys;
   timezone: number;
   id: number;
   name: string;
@@ -44,11 +45,15 @@ export type TForecastBE = {
   cod: string;
   message: number;
   cnt: number;
-  list: List[];
-  city: City;
+  list: TList[];
+  city: TCity;
 };
 
-type Sys = {
+//------------------------------------------------------------------
+//MARK: Data Types - Subtypes
+//------------------------------------------------------------------
+
+type TSys = {
   type: number;
   id: number;
   country: string;
@@ -57,21 +62,21 @@ type Sys = {
   pod: string;
 };
 
-type Clouds = {
+type TClouds = {
   all: number;
 };
 
-type Rain = {
+type TRain = {
   [key: string]: number;
 };
 
-type Wind = {
+type TWind = {
   speed: number;
   deg: number;
   gust: number;
 };
 
-type Main = {
+type TMain = {
   temp: number;
   feels_like: number;
   temp_min: number;
@@ -83,22 +88,22 @@ type Main = {
   temp_kf: number;
 };
 
-type Weather = {
+type TWeather = {
   id: number;
   main: string;
   description: string;
   icon: string;
 };
 
-type Coord = {
+type TCoord = {
   lon: number;
   lat: number;
 };
 
-type City = {
+type TCity = {
   id: number;
   name: string;
-  coord: Coord;
+  coord: TCoord;
   country: string;
   population: number;
   timezone: number;
@@ -106,15 +111,15 @@ type City = {
   sunset: number;
 };
 
-type List = {
+type TList = {
   dt: number;
-  main: Main;
-  weather: Weather[];
-  clouds: Clouds;
-  wind: Wind;
+  main: TMain;
+  weather: TWeather[];
+  clouds: TClouds;
+  wind: TWind;
   visibility: number;
   pop: number;
-  rain?: Rain;
-  sys: Sys;
+  rain?: TRain;
+  sys: TSys;
   dt_txt: string;
 };

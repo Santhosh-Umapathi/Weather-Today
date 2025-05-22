@@ -1,7 +1,19 @@
-import {TCoordinates} from './types';
-import {TCoordinatesBE} from '../../api/weather/types';
+import {TCoordinates} from './weather.dto.types';
+import {TCoordinatesBE} from '../../api';
 
 // City Name to Coordinates
-export const mapCoordinatesToDTO = (data: TCoordinatesBE[]): TCoordinates => {
-  return {lat: data[0].lat, lon: data[0].lon};
+export const mapCoordinatesToDTO = (
+  data: TCoordinatesBE[],
+): TCoordinates | null => {
+  // No coordinates found
+  if (!data || data.length === 0) {
+    return null;
+  }
+
+  const coordinates = {
+    lat: data[0].lat,
+    lon: data[0].lon,
+  };
+
+  return coordinates;
 };
