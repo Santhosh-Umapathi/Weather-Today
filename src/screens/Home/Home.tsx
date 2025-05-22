@@ -9,8 +9,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './styles';
 import {useController} from './controller';
-
-type TProps = {};
+import {TProps} from './types';
 
 export const Home = (props: TProps) => {
   const {data, gradientColors, weatherData, contentContainerStyle, location} =

@@ -2,18 +2,21 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Home, Search, SearchDetails} from '../screens';
 import {ROUTES} from '../const';
 import {useLocation, useSplash} from '../hooks';
-import {StatusBar} from 'react-native';
-import {useEffect} from 'react';
+import {TCoordinates} from '../dto';
 
-const Stack = createNativeStackNavigator();
+type TRouteKeys = (typeof ROUTES)[keyof typeof ROUTES];
+
+export type TMainStackParamList = {
+  [k in TRouteKeys]: k extends typeof ROUTES.SEARCH_DETAILS
+    ? TCoordinates
+    : undefined;
+};
+
+const Stack = createNativeStackNavigator<TMainStackParamList>();
 
 export const MainStack = () => {
   useLocation();
   useSplash();
-
-  // useEffect(() => {
-  //   StatusBar.setTranslucent(true);
-  // }, []);
 
   return (
     <Stack.Navigator>
