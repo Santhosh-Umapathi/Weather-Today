@@ -1,28 +1,41 @@
 import {useQuery} from '@tanstack/react-query';
-import {getFullWeather} from '../../api';
-import {TWeatherDataCardProps} from '../../components';
-import {generateWeatherQueryKey, generateWeatherType} from '../../helpers';
-import {colors} from '../../tokens';
-
+import {getFullWeather} from '../../../api';
+import {TWeatherDataCardProps} from '../';
+import {generateWeatherQueryKey, generateWeatherType} from '../../../helpers';
+import {colors} from '../../../tokens';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {useWeatherStore} from '../../store';
+import {useWeatherStore} from '../../../store';
+import {useRoute} from '@react-navigation/native';
+import {TSearchDetailsScreenProps} from '../../../screens/SearchDetails/types';
 
 export const useController = () => {
   const {top, bottom} = useSafeAreaInsets();
 
+  // Route Params from Search Details screen
+  const route = useRoute<TSearchDetailsScreenProps['route']>();
+  const routeParamLat = route.params?.lat;
+  const routeParamLon = route.params?.lon;
+  const routeParamCity = route.params?.city;
+
+  //Fallback to Home Screen Primary location
   const location = useWeatherStore(store =>
     store.locations.find(item => item.isPrimary),
   );
 
-  const queryKey = generateWeatherQueryKey({
-    lat: location?.lat,
-    lon: location?.lon,
-  });
+  const lat = routeParamLat || location?.lat;
+  const lon = routeParamLon || location?.lon;
+
+  const queryKey = routeParamCity
+    ? [routeParamCity]
+    : generateWeatherQueryKey({
+        lat,
+        lon,
+      });
 
   const {data, isLoading, isError} = useQuery({
-    enabled: !!location?.lat && !!location?.lon,
+    enabled: routeParamCity ? true : !!(lat && lon),
     queryKey,
-    queryFn: () => getFullWeather({lat: location?.lat, lon: location?.lon}),
+    queryFn: () => getFullWeather({lat, lon, city: routeParamCity}),
     staleTime: 60000 * 5, // 5 mins
     gcTime: 60000 * 10, // 10 mins
   });

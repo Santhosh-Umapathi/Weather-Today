@@ -1,24 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-
-type TProps = {};
+import {WeatherScreen} from '../../components';
+import {TProps} from './types';
 
 export const SearchDetails = (props: TProps) => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Search Details</Text>
-    </View>
-  );
+  return <WeatherScreen />;
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 16,
-  },
-});
