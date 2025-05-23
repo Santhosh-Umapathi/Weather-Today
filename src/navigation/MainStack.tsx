@@ -25,7 +25,16 @@ export const MainStack = () => {
         component={Home}
         options={{headerShown: false}}
       />
-      <Stack.Screen name={ROUTES.SEARCH} component={Search} />
+      <Stack.Screen
+        name={ROUTES.SEARCH}
+        component={Search}
+        // options={{
+        //   headerTitle: '',
+        //   headerBackButtonDisplayMode: 'minimal',
+        //   headerShadowVisible: false,
+        // }}
+        options={{headerShown: false}}
+      />
       <Stack.Screen name={ROUTES.SEARCH_DETAILS} component={SearchDetails} />
     </Stack.Navigator>
   );

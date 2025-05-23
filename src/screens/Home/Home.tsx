@@ -13,7 +13,7 @@ import {TProps} from './types';
 
 export const Home = (props: TProps) => {
   const {data, gradientColors, weatherData, contentContainerStyle, location} =
-    useController({});
+    useController();
 
   return (
     <LinearGradient

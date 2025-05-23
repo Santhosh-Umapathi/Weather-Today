@@ -11,20 +11,24 @@ import {
 import {styles} from './styles';
 import {generateWeatherType, TWeatherType} from '../../../helpers';
 
-const WEATHER_ICONS: {
-  [key in TWeatherType]: React.ReactElement;
-} = {
-  sunny: <Sunny width={230} height={230} />,
-  cloudy: <Cloudy width={230} height={230} />,
-  partialRain: <PartialRain width={230} height={230} />,
-  partialSun: <PartialSun width={230} height={230} />,
-  partialSunnyRain: <PartialSunnyRain width={230} height={230} />,
+const generateWeatherIcons = (type: TWeatherType, size = 230) => {
+  const WEATHER_ICONS: {
+    [key in TWeatherType]: React.ReactElement;
+  } = {
+    sunny: <Sunny width={size} height={size} />,
+    cloudy: <Cloudy width={size} height={size} />,
+    partialRain: <PartialRain width={size} height={size} />,
+    partialSun: <PartialSun width={size} height={size} />,
+    partialSunnyRain: <PartialSunnyRain width={size} height={size} />,
+  };
+
+  return WEATHER_ICONS[type];
 };
 
-export const CurrentWeather = ({temperature, weather, id}: TProps) => {
+export const CurrentWeather = ({temperature, weather, id, size}: TProps) => {
   return (
     <View style={styles.container}>
-      {WEATHER_ICONS[generateWeatherType(id || 0)]}
+      {generateWeatherIcons(generateWeatherType(id || 0), size)}
       <View style={styles.textContainer}>
         <Text style={styles.text}>
           {temperature && temperature.toFixed(0)}°C

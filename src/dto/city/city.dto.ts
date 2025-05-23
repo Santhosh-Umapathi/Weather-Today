@@ -10,6 +10,7 @@ export const mapCitiesToDTO = (data: TCitiesBE): TCity[] => {
     return cities;
   }
 
+  //TODO: Remove duplicates
   data.data.forEach(country => {
     // Return early if no cities are found
     if (!country.cities || country.cities.length === 0) {

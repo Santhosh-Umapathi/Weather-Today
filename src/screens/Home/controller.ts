@@ -3,11 +3,11 @@ import {getFullWeather} from '../../api';
 import {TWeatherDataCardProps} from '../../components';
 import {generateWeatherQueryKey, generateWeatherType} from '../../helpers';
 import {colors} from '../../tokens';
-import {TController} from './types';
+
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useWeatherStore} from '../../store';
 
-export const useController = ({}: TController) => {
+export const useController = () => {
   const {top, bottom} = useSafeAreaInsets();
 
   const location = useWeatherStore(store =>
@@ -18,8 +18,6 @@ export const useController = ({}: TController) => {
     lat: location?.lat,
     lon: location?.lon,
   });
-
-  console.log(queryKey);
 
   const {data, isLoading, isError} = useQuery({
     enabled: !!location?.lat && !!location?.lon,

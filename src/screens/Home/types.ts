@@ -8,5 +8,3 @@ export type THomeScreenProps = NativeStackScreenProps<
 >;
 
 export type TProps = {} & THomeScreenProps;
-
-export type TController = {};

@@ -3,6 +3,7 @@ export {default as PartialRain} from './PartialRain';
 export {default as PartialSun} from './PartialSun';
 export {default as PartialSunnyRain} from './PartialSunnyRain';
 export {default as Sunny} from './Sunny';
+export {default as Back} from './Back';
 export {default as BookmarkAdd} from './BookmarkAdd';
 export {default as BookmarkAdded} from './BookmarkAdded';
 export {default as Close} from './Close';
