@@ -10,5 +10,7 @@ export {default as Close} from './Close';
 export {default as LocationAdd} from './LocationAdd';
 export {default as Rain} from './Rain';
 export {default as SearchIcon} from './SearchIcon';
+export {default as StarFilled} from './StarFilled';
+export {default as StarOutline} from './StarOutline';
 export {default as Umbrella} from './Umbrella';
 export {default as Wind} from './Wind';
