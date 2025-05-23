@@ -5,7 +5,7 @@ import {styles} from './styles';
 import {LocationAdd} from '../../icons';
 import {useController} from './controller';
 
-export const MainWeather = ({name, canGoToSearch = true}: TProps) => {
+export const MainWeather = ({name, canGoToSearch}: TProps) => {
   const {date, goToSearch} = useController();
   return (
     <View style={styles.container}>

@@ -66,11 +66,15 @@ export const useController = () => {
     paddingBottom: bottom + 24,
   };
 
+  const canGoToSearch = route.params === undefined;
+
   return {
     weatherData,
     gradientColors,
     data,
     contentContainerStyle,
     location,
+    canGoToSearch,
+    routeParamCity,
   };
 };

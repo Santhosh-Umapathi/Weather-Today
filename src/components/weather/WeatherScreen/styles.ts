@@ -7,4 +7,5 @@ export const styles = StyleSheet.create({
     gap: 12,
     paddingHorizontal: 24,
   },
+  navContainer: {paddingHorizontal: 20},
 });

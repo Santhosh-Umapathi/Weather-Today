@@ -11,10 +11,18 @@ import {styles} from './styles';
 import {useController} from './controller';
 import {TProps} from './types';
 import {GRADIENT_CONFIG} from '../../../config';
+import {NavBackButton} from '../../NavBackButton';
 
 export const WeatherScreen = ({}: TProps) => {
-  const {data, gradientColors, weatherData, contentContainerStyle, location} =
-    useController();
+  const {
+    data,
+    gradientColors,
+    weatherData,
+    contentContainerStyle,
+    location,
+    canGoToSearch,
+    routeParamCity,
+  } = useController();
 
   return (
     <LinearGradient
@@ -22,8 +30,23 @@ export const WeatherScreen = ({}: TProps) => {
       colors={gradientColors}
       start={GRADIENT_CONFIG.start}
       end={GRADIENT_CONFIG.end}>
-      <ScrollView contentContainerStyle={contentContainerStyle}>
-        <MainWeather {...{name: data?.current.name}} />
+      {!canGoToSearch && (
+        <View
+          style={[
+            styles.navContainer,
+            {paddingTop: contentContainerStyle.paddingTop},
+          ]}>
+          <NavBackButton />
+        </View>
+      )}
+      <ScrollView
+        contentContainerStyle={{
+          paddingTop: canGoToSearch ? contentContainerStyle.paddingTop : 0,
+          paddingBottom: contentContainerStyle.paddingBottom,
+        }}>
+        <MainWeather
+          {...{name: routeParamCity || data?.current.name, canGoToSearch}}
+        />
 
         <CurrentWeather
           {...{
