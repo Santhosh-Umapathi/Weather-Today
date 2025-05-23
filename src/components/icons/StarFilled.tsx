@@ -4,8 +4,8 @@ import type {SvgProps} from 'react-native-svg';
 import {colors} from '../../tokens';
 const SvgStarFilled = (props: SvgProps) => (
   <Svg
-    width={props.width || 24}
-    height={props.height || 24}
+    width={props.width || 30}
+    height={props.height || 30}
     fill="none"
     viewBox="0 0 24 24"
     {...props}>

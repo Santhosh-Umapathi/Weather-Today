@@ -18,7 +18,11 @@ export const SavedList = ({isInputFocused}: TProps) => {
         },
       ]}
       style={[styles.listStyle, listStyle]}
-      renderItem={({item}) => <SavedItem {...{lat: item.lat, lon: item.lon}} />}
+      renderItem={({item}) => (
+        <SavedItem
+          {...{lat: item.lat, lon: item.lon, isPrimary: item.isPrimary}}
+        />
+      )}
     />
   );
 };

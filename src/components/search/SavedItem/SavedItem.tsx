@@ -3,8 +3,9 @@ import {TProps} from './types';
 import {styles} from './styles';
 import {CurrentWeather, MainWeather} from '../../weather';
 import {useController} from './controller';
+import {StarFilled} from '../../icons';
 
-export const SavedItem = ({lat, lon}: TProps) => {
+export const SavedItem = ({lat, lon, isPrimary = false}: TProps) => {
   const {data, goToSearchDetails} = useController({lat, lon});
   return (
     <TouchableOpacity onPress={goToSearchDetails} style={styles.container}>
@@ -17,6 +18,7 @@ export const SavedItem = ({lat, lon}: TProps) => {
           size: 130,
         }}
       />
+      {isPrimary && <StarFilled />}
     </TouchableOpacity>
   );
 };
