@@ -19,17 +19,9 @@ export const MainStack = () => {
   useSplash();
 
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name={ROUTES.HOME}
-        component={Home}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name={ROUTES.SEARCH}
-        component={Search}
-        options={{headerShown: false}}
-      />
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name={ROUTES.HOME} component={Home} />
+      <Stack.Screen name={ROUTES.SEARCH} component={Search} />
       <Stack.Screen name={ROUTES.SEARCH_DETAILS} component={SearchDetails} />
     </Stack.Navigator>
   );
