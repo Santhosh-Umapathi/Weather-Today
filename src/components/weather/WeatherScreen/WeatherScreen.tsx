@@ -45,7 +45,11 @@ export const WeatherScreen = ({}: TProps) => {
           paddingBottom: contentContainerStyle.paddingBottom,
         }}>
         <MainWeather
-          {...{name: routeParamCity || data?.current.name, canGoToSearch}}
+          {...{
+            name: routeParamCity || data?.current.name,
+            canGoToSearch,
+            showActions: !canGoToSearch,
+          }}
         />
 
         <CurrentWeather
