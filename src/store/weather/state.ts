@@ -1,7 +1,9 @@
+import {getData} from '../../storage';
 import {TWeatherState} from './types';
 
 // Weather Store Initial State
 export const state: TWeatherState = {
-  location: null,
   isLocationEnabled: null,
+  locations: getData('locations') || [],
+  savedSearches: getData('savedSearches') || [],
 };

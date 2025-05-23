@@ -9,7 +9,10 @@ import {useWeatherStore} from '../../store';
 
 export const useController = ({}: TController) => {
   const {top, bottom} = useSafeAreaInsets();
-  const location = useWeatherStore(store => store.location);
+
+  const location = useWeatherStore(store =>
+    store.locations.find(item => item.isPrimary),
+  );
 
   const {data, isLoading, isError} = useQuery({
     enabled: !!location?.lat && !!location?.lon,
