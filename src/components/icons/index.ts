@@ -8,6 +8,6 @@ export {default as BookmarkAdded} from './BookmarkAdded';
 export {default as Close} from './Close';
 export {default as LocationAdd} from './LocationAdd';
 export {default as Rain} from './Rain';
-export {default as Search} from './Search';
+export {default as SearchIcon} from './SearchIcon';
 export {default as Umbrella} from './Umbrella';
 export {default as Wind} from './Wind';
