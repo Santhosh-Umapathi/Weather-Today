@@ -118,10 +118,16 @@ export const actions = (set: TSet) =>
         };
       });
     },
-    setSavedSearches: searchText => {
+    setSearchText: searchText => {
       set(state => ({
         ...state,
-        savedSearches: [],
+        searchText,
+      }));
+    },
+    setFilteredCities: cities => {
+      set(state => ({
+        ...state,
+        filteredCities: cities,
       }));
     },
   } as TWeatherActions);

@@ -10,6 +10,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {styles} from './styles';
 import {useController} from './controller';
 import {TProps} from './types';
+import {GRADIENT_CONFIG} from '../../config';
 
 export const Home = (props: TProps) => {
   const {data, gradientColors, weatherData, contentContainerStyle, location} =
@@ -19,8 +20,8 @@ export const Home = (props: TProps) => {
     <LinearGradient
       style={styles.container}
       colors={gradientColors}
-      start={{x: 0.0, y: 0.25}}
-      end={{x: 0.75, y: 1.0}}>
+      start={GRADIENT_CONFIG.start}
+      end={GRADIENT_CONFIG.end}>
       <ScrollView contentContainerStyle={contentContainerStyle}>
         <MainWeather {...{name: data?.current.name}} />
 

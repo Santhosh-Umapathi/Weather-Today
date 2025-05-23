@@ -5,5 +5,6 @@ import {TWeatherState} from './types';
 export const state: TWeatherState = {
   isLocationEnabled: null,
   locations: getData('locations') || [],
-  savedSearches: getData('savedSearches') || [],
+  searchText: '',
+  filteredCities: [],
 };

@@ -8,7 +8,7 @@ type TRouteKeys = (typeof ROUTES)[keyof typeof ROUTES];
 
 export type TMainStackParamList = {
   [k in TRouteKeys]: k extends typeof ROUTES.SEARCH_DETAILS
-    ? TCoordinates
+    ? Partial<TCoordinates> & {city?: string}
     : undefined;
 };
 
@@ -28,11 +28,6 @@ export const MainStack = () => {
       <Stack.Screen
         name={ROUTES.SEARCH}
         component={Search}
-        // options={{
-        //   headerTitle: '',
-        //   headerBackButtonDisplayMode: 'minimal',
-        //   headerShadowVisible: false,
-        // }}
         options={{headerShown: false}}
       />
       <Stack.Screen name={ROUTES.SEARCH_DETAILS} component={SearchDetails} />
