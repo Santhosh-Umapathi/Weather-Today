@@ -1,7 +1,7 @@
 import {useQuery} from '@tanstack/react-query';
 import {getFullWeather} from '../../api';
 import {TWeatherDataCardProps} from '../../components';
-import {generateWeatherType} from '../../helpers';
+import {generateWeatherQueryKey, generateWeatherType} from '../../helpers';
 import {colors} from '../../tokens';
 import {TController} from './types';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -14,11 +14,16 @@ export const useController = ({}: TController) => {
     store.locations.find(item => item.isPrimary),
   );
 
-  console.log('useController', location);
+  const queryKey = generateWeatherQueryKey({
+    lat: location?.lat,
+    lon: location?.lon,
+  });
+
+  console.log(queryKey);
 
   const {data, isLoading, isError} = useQuery({
     enabled: !!location?.lat && !!location?.lon,
-    queryKey: [JSON.stringify(location)],
+    queryKey,
     queryFn: () => getFullWeather({lat: location?.lat, lon: location?.lon}),
     staleTime: 60000 * 5, // 5 mins
     gcTime: 60000 * 10, // 10 mins
