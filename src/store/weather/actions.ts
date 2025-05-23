@@ -36,7 +36,7 @@ export const actions = (set: TSet) =>
           const index = existingLocations.findIndex(
             item => item.isDeviceLocation,
           );
-          existingLocations[index] = {...location};
+          existingLocations[index] = {...existingLocations[index], ...location};
 
           saveData('locations', existingLocations);
           return {
@@ -102,6 +102,7 @@ export const actions = (set: TSet) =>
           existingLocations[newIndex] = {
             ...existingLocations[newIndex],
             isPrimary: true,
+            isSaved: true,
           };
 
           saveData('locations', existingLocations);

@@ -14,6 +14,8 @@ export const useController = ({}: TController) => {
     store.locations.find(item => item.isPrimary),
   );
 
+  console.log('useController', location);
+
   const {data, isLoading, isError} = useQuery({
     enabled: !!location?.lat && !!location?.lon,
     queryKey: [JSON.stringify(location)],
