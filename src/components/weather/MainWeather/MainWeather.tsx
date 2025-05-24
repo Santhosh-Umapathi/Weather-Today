@@ -2,11 +2,24 @@ import {TouchableOpacity, View} from 'react-native';
 import {TProps} from './types';
 import {Text} from '../../Text';
 import {styles} from './styles';
-import {BookmarkAdd, LocationAdd, StarOutline} from '../../icons';
+import {
+  BookmarkAdd,
+  BookmarkAdded,
+  LocationAdd,
+  StarFilled,
+  StarOutline,
+} from '../../icons';
 import {useController} from './controller';
 
 export const MainWeather = ({name, canGoToSearch, showActions}: TProps) => {
-  const {date, goToSearch} = useController();
+  const {
+    date,
+    goToSearch,
+    updateBookmarkLocation,
+    updatePrimaryLocation,
+    isBookmarked,
+    isPrimary,
+  } = useController();
   return (
     <View style={styles.container}>
       <View>
@@ -19,18 +32,20 @@ export const MainWeather = ({name, canGoToSearch, showActions}: TProps) => {
         </TouchableOpacity>
       )}
       {showActions && (
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 4,
-          }}>
-          <TouchableOpacity onPress={goToSearch}>
-            <StarOutline width={34} height={34} />
+        <View style={styles.actionsContainer}>
+          <TouchableOpacity onPress={updatePrimaryLocation}>
+            {isPrimary ? (
+              <StarFilled width={34} height={34} />
+            ) : (
+              <StarOutline width={34} height={34} />
+            )}
           </TouchableOpacity>
-          <TouchableOpacity onPress={goToSearch}>
-            <BookmarkAdd width={34} height={34} />
+          <TouchableOpacity onPress={updateBookmarkLocation}>
+            {isBookmarked ? (
+              <BookmarkAdded width={34} height={34} />
+            ) : (
+              <BookmarkAdd width={34} height={34} />
+            )}
           </TouchableOpacity>
         </View>
       )}

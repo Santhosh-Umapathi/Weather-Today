@@ -13,4 +13,10 @@ export const styles = StyleSheet.create({
     color: colors.gray,
     marginTop: 6,
   },
+  actionsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
+  },
 });

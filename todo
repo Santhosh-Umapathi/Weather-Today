@@ -1,0 +1,5 @@
+- query api calls optimized
+- check api calls and usage correctly for sub components
+- refetch logics to use cache correctly
+- remove duplicates from cities
+- app name iOS
