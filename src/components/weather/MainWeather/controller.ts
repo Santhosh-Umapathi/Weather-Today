@@ -3,9 +3,11 @@ import {ROUTES} from '../../../const';
 import {formatDate} from '../../../helpers';
 import {THomeScreenProps} from '../../../screens';
 import {useState} from 'react';
+import {useWeatherStore} from '../../../store';
 
 export const useController = () => {
   const navigation = useNavigation<THomeScreenProps['navigation']>();
+  const setLocations = useWeatherStore(store => store.setLocations);
 
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isPrimary, setIsPrimary] = useState(false);
@@ -23,6 +25,7 @@ export const useController = () => {
     }
 
     setIsBookmarked(prev => !prev);
+    // setLocations()
   };
 
   const updatePrimaryLocation = () => {
@@ -32,6 +35,7 @@ export const useController = () => {
     }
 
     setIsPrimary(prev => !prev);
+    // setLocations()
   };
 
   return {
