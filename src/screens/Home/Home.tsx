@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text, WeatherScreen} from '../../components';
+import {NoWeather, WeatherScreen} from '../../components';
 import {TProps} from './types';
 import {useController} from './controller';
-import {ActivityIndicator, View} from 'react-native';
+import {ActivityIndicator} from 'react-native';
 
 export const Home = ({}: TProps) => {
   const {isRequestingPermissions, location} = useController();
@@ -12,11 +12,7 @@ export const Home = ({}: TProps) => {
   }
 
   if (!location) {
-    return (
-      <View>
-        <Text>Location permission not given</Text>
-      </View>
-    );
+    return <NoWeather />;
   }
 
   return <WeatherScreen {...{...location}} />;
