@@ -24,6 +24,7 @@ export const useLocation = () => {
         },
         error => {
           setIsRequestingPermissions(false);
+          setLocation(undefined);
           console.log('Error getting location:', error);
         },
       );
