@@ -10,22 +10,28 @@ export const useLocation = () => {
 
   // Get/Set the current location
   useEffect(() => {
-    Geolocation.getCurrentPosition(
-      success => {
-        const coords = {
-          lat: success.coords.latitude,
-          lon: success.coords.longitude,
-        };
+    // Set the Device Geo Location
+    if (!primaryLocation) {
+      Geolocation.getCurrentPosition(
+        success => {
+          const coords = {
+            lat: success.coords.latitude,
+            lon: success.coords.longitude,
+          };
 
-        setLocation(coords);
-        setIsRequestingPermissions(false);
-      },
-      error => {
-        setIsRequestingPermissions(false);
-        console.log('Error getting location:', error);
-        primaryLocation && setLocation(primaryLocation);
-      },
-    );
+          setLocation(coords);
+          setIsRequestingPermissions(false);
+        },
+        error => {
+          setIsRequestingPermissions(false);
+          console.log('Error getting location:', error);
+        },
+      );
+    }
+    // Set the manual override location
+    else {
+      setLocation(primaryLocation);
+    }
   }, [primaryLocation]);
 
   return {
