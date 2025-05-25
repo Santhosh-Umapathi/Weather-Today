@@ -1,20 +1,13 @@
 import Geolocation from '@react-native-community/geolocation';
-import {useCallback, useEffect} from 'react';
-import {useWeatherStore} from '../store';
+import {useEffect, useState} from 'react';
 import {TCoordinates} from '../dto';
 
 export const useLocation = () => {
-  const updateDeviceLocation = useCallback(({lat, lon}: TCoordinates) => {
-    const setLocations = useWeatherStore.getState().setLocations;
-
-    setLocations({lat, lon, isDeviceLocation: true});
-  }, []);
+  const [location, setLocation] = useState<TCoordinates>();
+  const [isRequestingPermissions, setIsRequestingPermissions] = useState(true);
 
   // Get/Set the current location
   useEffect(() => {
-    const setIsLocationEnabled =
-      useWeatherStore.getState().setIsLocationEnabled;
-
     Geolocation.getCurrentPosition(
       success => {
         const coords = {
@@ -22,13 +15,18 @@ export const useLocation = () => {
           lon: success.coords.longitude,
         };
 
-        setIsLocationEnabled(true);
-        updateDeviceLocation(coords);
+        setLocation(coords);
+        setIsRequestingPermissions(false);
       },
       error => {
-        setIsLocationEnabled(false);
+        setIsRequestingPermissions(false);
         console.log('Error getting location:', error);
       },
     );
-  }, [updateDeviceLocation]);
+  }, []);
+
+  return {
+    isRequestingPermissions,
+    location,
+  };
 };
