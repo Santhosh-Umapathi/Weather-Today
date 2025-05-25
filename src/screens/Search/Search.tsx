@@ -25,10 +25,7 @@ export const Search = ({}: TProps) => {
         <NavBackButton />
         <SearchBar {...{setShowRecentSearches}} />
       </View>
-      <>
-        <AutoSuggestions showRecentSearches={showRecentSearches} />
-        <SearchList />
-      </>
+      {showRecentSearches ? <AutoSuggestions /> : <SearchList />}
     </LinearGradient>
   );
 };

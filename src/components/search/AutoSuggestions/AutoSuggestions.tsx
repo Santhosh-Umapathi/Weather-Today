@@ -1,16 +1,11 @@
 import {FlatList} from 'react-native';
-import {TProps} from './types';
 import {styles} from './styles';
 import {SearchItem} from '../SearchItem';
 import {useController} from './controller';
 
-export const AutoSuggestions = ({showRecentSearches}: TProps) => {
+export const AutoSuggestions = () => {
   const {savedSearches, paddingBottom, setSearchText} = useController();
 
-  // Show only if Input is focused
-  if (!showRecentSearches) {
-    return null;
-  }
   return (
     <FlatList
       keyExtractor={item => item.id.toString()}
