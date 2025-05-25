@@ -20,7 +20,7 @@ export const useController = (params: TController) => {
   const routeParamLon = route.params?.lon;
   const routeParamCity = route.params?.city;
 
-  const lat = routeParamLat || params?.lat; // Either Search location or Home device location
+  const lat = routeParamLat || params?.lat; // Either Search location or Home device/primary location
   const lon = routeParamLon || params?.lon;
 
   const queryKey = routeParamCity
