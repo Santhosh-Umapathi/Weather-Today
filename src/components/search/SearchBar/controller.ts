@@ -15,7 +15,6 @@ export const useController = ({setShowRecentSearches}: TController) => {
 
   const [searchText, setSearchText] = useState('');
   const [isInputFocused, setIsInputFocused] = useState(false);
-  console.log('🚀 --- useController --- isInputFocused:', isInputFocused);
   const searchInputRef = useRef<TextInput>(null);
 
   const {data: cities} = useQuery({

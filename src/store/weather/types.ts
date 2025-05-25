@@ -33,12 +33,3 @@ export type TSet = {
 };
 
 export type TGet = () => TWeatherStore;
-
-export type TLocation = Partial<TCoordinates> & {
-  isPrimary?: boolean;
-  isSaved?: boolean;
-  isDeviceLocation?: boolean;
-  city?: string;
-};
-
-export type TLocations = TLocation[];

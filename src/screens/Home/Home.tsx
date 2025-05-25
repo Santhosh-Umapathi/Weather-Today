@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text, WeatherScreen} from '../../components';
-
 import {TProps} from './types';
 import {useController} from './controller';
 import {ActivityIndicator, View} from 'react-native';

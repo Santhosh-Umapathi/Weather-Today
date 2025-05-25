@@ -11,7 +11,6 @@ import {
 import {styles} from './styles';
 import {generateWeatherType, TWeatherType} from '../../../helpers';
 
-//TODO: Move to helpers
 const generateWeatherIcons = (type: TWeatherType, size = 230) => {
   const WEATHER_ICONS: {
     [key in TWeatherType]: React.ReactElement;
@@ -29,7 +28,7 @@ const generateWeatherIcons = (type: TWeatherType, size = 230) => {
 export const CurrentWeather = ({temperature, weather, id, size}: TProps) => {
   return (
     <View style={styles.container}>
-      {generateWeatherIcons(generateWeatherType(id || 0), size)}
+      {generateWeatherIcons(generateWeatherType(id), size)}
       <View style={styles.textContainer}>
         <Text style={styles.text}>
           {temperature && temperature.toFixed(0)}°C

@@ -1,14 +1,12 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {MainNavigator} from './navigation/MainNavigator';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import {deleteAllData} from './storage';
+import {useSplash} from './hooks';
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  // useEffect(() => {
-  //   deleteAllData();
-  // }, []);
+  useSplash();
   return (
     <QueryClientProvider client={queryClient}>
       <MainNavigator />

@@ -21,7 +21,6 @@ export const WeatherScreen = (props: TProps) => {
     contentContainerStyle,
     canGoToSearch,
     routeParamCity,
-    queryKey,
     lat,
     lon,
     id,
@@ -57,7 +56,7 @@ export const WeatherScreen = (props: TProps) => {
 
         <CurrentWeather
           {...{
-            id: data?.current.main.id,
+            id,
             temperature: data?.current.main.temperature,
             weather: data?.current.main.weather,
           }}
@@ -81,7 +80,6 @@ export const WeatherScreen = (props: TProps) => {
             lat,
             lon,
             city: routeParamCity,
-            queryKey,
           }}
         />
       </ScrollView>

@@ -73,7 +73,6 @@ export const useController = (params: TController) => {
     contentContainerStyle,
     canGoToSearch,
     routeParamCity,
-    queryKey,
     lat,
     lon,
     id,

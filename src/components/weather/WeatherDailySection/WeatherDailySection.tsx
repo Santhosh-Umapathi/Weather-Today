@@ -5,8 +5,8 @@ import {styles} from './styles';
 import {useController} from './controller';
 import {WeatherDailyCard} from '../WeatherDailyCard';
 
-export const WeatherDailySection = ({lat, lon, queryKey, city}: TProps) => {
-  const {data} = useController({lat, lon, queryKey, city});
+export const WeatherDailySection = ({lat, lon, city}: TProps) => {
+  const {data} = useController({lat, lon, city});
 
   return (
     <View style={styles.container}>
