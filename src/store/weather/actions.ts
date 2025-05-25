@@ -46,7 +46,7 @@ export const actions = (set: TSet) =>
         }
 
         //Remove location
-        if (!location.isSaved) {
+        if (location.isSaved) {
           console.log('Remove location');
           const filteredLocations = existingLocations.filter(
             item => item.lat !== location.lat,
@@ -72,7 +72,7 @@ export const actions = (set: TSet) =>
         }
 
         // Add location
-        if (location.isSaved) {
+        if (!location.isSaved) {
           console.log('Add new location');
           const addedLocations = [...existingLocations, location];
           saveData('locations', addedLocations);

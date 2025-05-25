@@ -43,6 +43,7 @@ export const mapWeatherToDTO = (data: TWeatherBE): TWeather | null => {
       icon: data.weather[0].icon,
       weather: data.weather[0].main,
     },
+    coordinates: data.coord,
   };
 
   return weather;

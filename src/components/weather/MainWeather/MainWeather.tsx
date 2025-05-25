@@ -19,7 +19,7 @@ export const MainWeather = ({name, canGoToSearch, showActions}: TProps) => {
     updatePrimaryLocation,
     isBookmarked,
     isPrimary,
-  } = useController();
+  } = useController({});
   return (
     <View style={styles.container}>
       <View>

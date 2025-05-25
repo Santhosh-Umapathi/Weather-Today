@@ -35,11 +35,11 @@ export const Search = (props: TProps) => {
           {...{isInputFocused, setIsInputFocused, setShowRecentSearches}}
         />
       </View>
-      <View>
+      <>
         <AutoSuggestions showRecentSearches={showRecentSearches} />
         <SearchList isInputFocused={isInputFocused} />
         <SavedList isInputFocused={isInputFocused} />
-      </View>
+      </>
     </LinearGradient>
   );
 };
