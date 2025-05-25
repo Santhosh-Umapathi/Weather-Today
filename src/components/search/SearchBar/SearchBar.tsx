@@ -17,7 +17,10 @@ export const SearchBar = ({setShowRecentSearches}: TProps) => {
   } = useController({setShowRecentSearches});
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.searchIcon} onPress={searchLocation}>
+      <TouchableOpacity
+        style={styles.searchIcon}
+        onPress={searchLocation}
+        testID="search-icon">
         <SearchIcon />
       </TouchableOpacity>
       <TextInput
@@ -29,7 +32,10 @@ export const SearchBar = ({setShowRecentSearches}: TProps) => {
         onBlur={onBlur}
       />
       {isClearIconVisible && (
-        <TouchableOpacity style={styles.closeIcon} onPress={clearSearch}>
+        <TouchableOpacity
+          style={styles.closeIcon}
+          onPress={clearSearch}
+          testID="close-icon">
           <Close />
         </TouchableOpacity>
       )}
