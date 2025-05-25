@@ -11,6 +11,7 @@ import {
 import {styles} from './styles';
 import {generateWeatherType, TWeatherType} from '../../../helpers';
 
+//TODO: Move to helpers
 const generateWeatherIcons = (type: TWeatherType, size = 230) => {
   const WEATHER_ICONS: {
     [key in TWeatherType]: React.ReactElement;

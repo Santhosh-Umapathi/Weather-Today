@@ -18,4 +18,7 @@ export const styles = StyleSheet.create({
     top: -24,
     borderRadius: 8,
   },
+  firstCard: {
+    backgroundColor: colors.white,
+  },
 });

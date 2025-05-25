@@ -1,6 +1,6 @@
 import {OPEN_WEATHER_URLS} from '../../../const';
 import {formatDate} from '../../../helpers';
-import {colors} from '../../../tokens';
+import {styles} from './styles';
 import {TController} from './types';
 
 export const useController = ({
@@ -23,11 +23,7 @@ export const useController = ({
 
   const iconUrl = `${OPEN_WEATHER_URLS.icon}/${icon}@2x.png`;
 
-  const style = isFirstItem
-    ? {
-        backgroundColor: colors.white,
-      }
-    : undefined;
+  const style = isFirstItem ? styles.firstCard : undefined;
 
   return {
     label,

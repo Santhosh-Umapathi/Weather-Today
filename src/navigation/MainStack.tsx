@@ -7,7 +7,9 @@ import {TCoordinates} from '../dto';
 type TRouteKeys = (typeof ROUTES)[keyof typeof ROUTES];
 
 export type TMainStackParamList = {
-  [k in TRouteKeys]: k extends typeof ROUTES.SEARCH_DETAILS
+  [k in TRouteKeys]: k extends typeof ROUTES.SEARCH
+    ? {id: number}
+    : k extends typeof ROUTES.SEARCH_DETAILS
     ? Partial<TCoordinates> & {city?: string}
     : undefined;
 };

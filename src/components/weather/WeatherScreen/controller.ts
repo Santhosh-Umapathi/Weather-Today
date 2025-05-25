@@ -36,6 +36,7 @@ export const useController = (params: TController) => {
     refetchOnMount: false,
     refetchOnWindowFocus: false,
   });
+  const id = data?.current.main.id || 0;
 
   const gradientColors =
     colors.weatherColors[generateWeatherType(data?.current.main.id || 0)];
@@ -75,5 +76,6 @@ export const useController = (params: TController) => {
     queryKey,
     lat,
     lon,
+    id,
   };
 };

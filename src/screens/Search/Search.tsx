@@ -4,17 +4,11 @@ import {TProps} from './types';
 import {styles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import {useController} from './controller';
-
-import {
-  AutoSuggestions,
-  NavBackButton,
-  SavedList,
-  SearchBar,
-} from '../../components';
+import {AutoSuggestions, NavBackButton, SearchBar} from '../../components';
 import {GRADIENT_CONFIG} from '../../config';
 import {SearchList} from '../../components';
 
-export const Search = (props: TProps) => {
+export const Search = ({}: TProps) => {
   const {
     gradientColors,
     paddingTop,

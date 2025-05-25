@@ -24,6 +24,7 @@ export const WeatherScreen = (props: TProps) => {
     queryKey,
     lat,
     lon,
+    id,
   } = useController(props);
 
   return (
@@ -50,6 +51,7 @@ export const WeatherScreen = (props: TProps) => {
           {...{
             name: routeParamCity || data?.current.name,
             canGoToSearch,
+            id,
           }}
         />
 
