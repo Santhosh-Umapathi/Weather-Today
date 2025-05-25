@@ -3,4 +3,3 @@
 - refetch logics to use cache correctly
 - remove duplicates from cities
 - actions logic for bookmark and primary
-- ios click outside for input on focus to check
