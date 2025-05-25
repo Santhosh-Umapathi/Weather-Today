@@ -7,6 +7,7 @@ import {getCities} from '../../../api';
 import debounce from 'lodash.debounce';
 import {TextInput} from 'react-native';
 import {TController} from './types';
+import {useFocusEffect} from '@react-navigation/native';
 
 export const useController = ({
   isInputFocused,
@@ -132,12 +133,12 @@ export const useController = ({
   );
 
   // Clear search input
-  const clearSearch = () => {
+  const clearSearch = useCallback(() => {
     setSearchText('');
     searchInputRef.current?.blur();
     setIsInputFocused(false);
     setFilteredCities([]);
-  };
+  }, [setFilteredCities, setIsInputFocused]);
 
   //Show/Hide recent searches dropdown
   useEffect(() => {
@@ -165,6 +166,15 @@ export const useController = ({
       useWeatherStore.getState().setSearchText('');
     }
   }, [autoSuggestionSearchText, onChangeText]);
+
+  useFocusEffect(
+    useCallback(() => {
+      // Clear Search on losing focus
+      return () => {
+        clearSearch();
+      };
+    }, [clearSearch]),
+  );
 
   return {
     searchText,
