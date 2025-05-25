@@ -7,5 +7,10 @@ export const styles = StyleSheet.create({
     gap: 12,
     paddingHorizontal: 24,
   },
-  navContainer: {paddingHorizontal: 20},
+  navContainer: {
+    paddingHorizontal: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
 });

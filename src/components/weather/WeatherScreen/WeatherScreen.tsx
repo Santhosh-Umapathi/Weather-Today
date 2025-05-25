@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, TouchableOpacity} from 'react-native';
 import {
   CurrentWeather,
   MainWeather,
@@ -12,6 +12,7 @@ import {useController} from './controller';
 import {TProps} from './types';
 import {GRADIENT_CONFIG} from '../../../config';
 import {NavBackButton} from '../../NavBackButton';
+import {StarFilled, StarOutline} from '../../icons';
 
 export const WeatherScreen = (props: TProps) => {
   const {
@@ -24,6 +25,8 @@ export const WeatherScreen = (props: TProps) => {
     lat,
     lon,
     id,
+    isPrimary,
+    updateIsPrimary,
   } = useController(props);
 
   return (
@@ -39,6 +42,15 @@ export const WeatherScreen = (props: TProps) => {
             {paddingTop: contentContainerStyle.paddingTop},
           ]}>
           <NavBackButton />
+          {isPrimary ? (
+            <TouchableOpacity onPress={updateIsPrimary}>
+              <StarFilled />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity onPress={updateIsPrimary}>
+              <StarOutline />
+            </TouchableOpacity>
+          )}
         </View>
       )}
       <ScrollView

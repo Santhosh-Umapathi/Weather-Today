@@ -7,9 +7,11 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useRoute} from '@react-navigation/native';
 import {TSearchDetailsScreenProps} from '../../../screens/SearchDetails/types';
 import {TController} from './types';
+import {useState} from 'react';
 
 export const useController = (params: TController) => {
   const {top, bottom} = useSafeAreaInsets();
+  const [isPrimary, setIsPrimary] = useState(false);
 
   // Route Params from Search Details screen
   const route = useRoute<TSearchDetailsScreenProps['route']>();
@@ -66,6 +68,10 @@ export const useController = (params: TController) => {
 
   const canGoToSearch = route.params === undefined;
 
+  const updateIsPrimary = () => {
+    setIsPrimary(prev => !prev);
+  };
+
   return {
     weatherData,
     gradientColors,
@@ -76,5 +82,7 @@ export const useController = (params: TController) => {
     lat,
     lon,
     id,
+    isPrimary,
+    updateIsPrimary,
   };
 };
