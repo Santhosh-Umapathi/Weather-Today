@@ -4,12 +4,14 @@ import {TCity, TCoordinates} from '../../dto';
 export type TWeatherState = {
   searchText: string;
   filteredCities: TCity[];
+  primaryLocation: TCoordinates | undefined;
 };
 
 //Types for Weather Actions
 export type TWeatherActions = {
   setSearchText: (payload: string) => void;
   setFilteredCities: (payload: TCity[]) => void;
+  setPrimaryLocation: (payload: TCoordinates | undefined) => void;
 };
 
 //Types for Global Store

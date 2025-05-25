@@ -7,7 +7,8 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useRoute} from '@react-navigation/native';
 import {TSearchDetailsScreenProps} from '../../../screens/SearchDetails/types';
 import {TController} from './types';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {useWeatherStore} from '../../../store';
 
 export const useController = (params: TController) => {
   const {top, bottom} = useSafeAreaInsets();
@@ -40,6 +41,19 @@ export const useController = (params: TController) => {
   });
   const id = data?.current.main.id || 0;
 
+  // Set the star status
+  useEffect(() => {
+    const primaryLocation = useWeatherStore.getState().primaryLocation;
+
+    if (
+      primaryLocation &&
+      primaryLocation.lat === data?.current.coordinates.lat &&
+      primaryLocation.lon === data?.current.coordinates.lon
+    ) {
+      setIsPrimary(true);
+    }
+  }, [data]);
+
   const gradientColors =
     colors.weatherColors[generateWeatherType(data?.current.main.id || 0)];
 
@@ -68,8 +82,25 @@ export const useController = (params: TController) => {
 
   const canGoToSearch = route.params === undefined;
 
+  // Update Star status
   const updateIsPrimary = () => {
-    setIsPrimary(prev => !prev);
+    setIsPrimary(prev => {
+      // Manually override primary location in storage and global store
+      const setPrimaryLocation = useWeatherStore.getState().setPrimaryLocation;
+      const value = !prev;
+
+      if (value) {
+        if (data?.current.coordinates) {
+          setPrimaryLocation({
+            lat: data.current.coordinates.lat,
+            lon: data.current.coordinates.lon,
+          });
+        }
+      } else {
+        setPrimaryLocation(undefined);
+      }
+      return value;
+    });
   };
 
   return {

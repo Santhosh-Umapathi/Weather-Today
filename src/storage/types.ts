@@ -1,5 +1,5 @@
 //Storage Types
-export type TStorageKey = 'savedSearches';
+export type TStorageKey = 'savedSearches' | 'primaryLocation';
 
 export type TStorageValue<T> = T;
 
