@@ -4,11 +4,7 @@ import {styles} from './styles';
 import {Close, SearchIcon} from '../../icons';
 import {useController} from './controller';
 
-export const SearchBar = ({
-  isInputFocused,
-  setIsInputFocused,
-  setShowRecentSearches,
-}: TProps) => {
+export const SearchBar = ({setShowRecentSearches}: TProps) => {
   const {
     searchText,
     isClearIconVisible,
@@ -18,7 +14,7 @@ export const SearchBar = ({
     onBlur,
     clearSearch,
     searchInputRef,
-  } = useController({isInputFocused, setIsInputFocused, setShowRecentSearches});
+  } = useController({setShowRecentSearches});
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.searchIcon} onPress={searchLocation}>

@@ -9,15 +9,12 @@ import {TextInput} from 'react-native';
 import {TController} from './types';
 import {useFocusEffect} from '@react-navigation/native';
 
-export const useController = ({
-  isInputFocused,
-  setIsInputFocused,
-  setShowRecentSearches,
-}: TController) => {
+export const useController = ({setShowRecentSearches}: TController) => {
   const setFilteredCities = useWeatherStore(store => store.setFilteredCities);
   const autoSuggestionSearchText = useWeatherStore(store => store.searchText);
 
   const [searchText, setSearchText] = useState('');
+  const [isInputFocused, setIsInputFocused] = useState(false);
   const searchInputRef = useRef<TextInput>(null);
 
   const {data: cities} = useQuery({

@@ -12,9 +12,7 @@ export const Search = ({}: TProps) => {
   const {
     gradientColors,
     paddingTop,
-    setIsInputFocused,
     showRecentSearches,
-    isInputFocused,
     setShowRecentSearches,
   } = useController();
   return (
@@ -25,13 +23,11 @@ export const Search = ({}: TProps) => {
       end={GRADIENT_CONFIG.end}>
       <View style={[styles.searchContainer, {paddingTop}]}>
         <NavBackButton />
-        <SearchBar
-          {...{isInputFocused, setIsInputFocused, setShowRecentSearches}}
-        />
+        <SearchBar {...{setShowRecentSearches}} />
       </View>
       <>
         <AutoSuggestions showRecentSearches={showRecentSearches} />
-        <SearchList isInputFocused={isInputFocused} />
+        <SearchList />
       </>
     </LinearGradient>
   );

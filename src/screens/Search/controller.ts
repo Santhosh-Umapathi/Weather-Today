@@ -11,7 +11,6 @@ export const useController = () => {
   const route = useRoute<TSearchScreenProps['route']>();
   const id = route.params.id;
 
-  const [isInputFocused, setIsInputFocused] = useState(false);
   const [showRecentSearches, setShowRecentSearches] = useState(false);
 
   const gradientColors = colors.weatherColors[generateWeatherType(id)];
@@ -21,8 +20,6 @@ export const useController = () => {
     gradientColors,
     paddingTop,
     showRecentSearches,
-    isInputFocused,
-    setIsInputFocused,
     setShowRecentSearches,
   };
 };
