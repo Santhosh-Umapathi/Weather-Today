@@ -18,7 +18,6 @@
 | Testing (Unit Tests)                                                 | ✅     |
 | Error Handling (Error Boundaries)                                    | ✅     |
 | DTO on Client                                                        | ✅     |
-| Mock Data                                                            | ✅     |
 | -------------------------------                                      | -      |
 | Testing (Integration Tests, E2E Tests)                               | ❌     |
 | Database                                                             | ❌     |
@@ -32,6 +31,7 @@
 | Push Notifications                                                   | ❌     |
 | Offline Support                                                      | ❌     |
 | Excellent Linting and Formatting (Spell Checker, Linter rules, etc.) | ❌     |
+| Mock Data                                                            | ❌     |
 
 ## Additional Improvements
 

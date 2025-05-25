@@ -28,4 +28,4 @@
 ## Additional Improvements
 
 1. Color scheme based on weather conditions
-2. Weather condition icons and animations
+2. Weather condition icons

@@ -146,11 +146,8 @@ export const useController = ({setShowRecentSearches}: TController) => {
       isInputFocused &&
       savedSearches !== undefined
     ) {
-      console.log(searchText.length < 1, isInputFocused, savedSearches);
-      console.log('true');
       setShowRecentSearches(true);
     } else {
-      console.log('false');
       setShowRecentSearches(false);
     }
   }, [setShowRecentSearches, searchText.length, isInputFocused]);
