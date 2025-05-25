@@ -38,7 +38,6 @@ export const Search = (props: TProps) => {
       <>
         <AutoSuggestions showRecentSearches={showRecentSearches} />
         <SearchList isInputFocused={isInputFocused} />
-        <SavedList isInputFocused={isInputFocused} />
       </>
     </LinearGradient>
   );
