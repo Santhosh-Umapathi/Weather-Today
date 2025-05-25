@@ -43,3 +43,4 @@ Additional improvements which are part of the implementation
 | Performance Optimizations                    | ✅     |
 | Code Readability (Clean Code)                | ✅     |
 | Local Storage (MMKV)                         | ✅     |
+| API Data Caching                             | ✅     |

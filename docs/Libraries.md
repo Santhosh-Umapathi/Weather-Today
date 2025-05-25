@@ -1,9 +1,11 @@
-# Libraries Checklist
+# Core Libraries Checklist
 
-Libraries that are installed for the required features
+Core Libraries that are installed for the required features
 
-| Library          | Installed |
-| ---------------- | --------- |
-| react-navigation | ✅        |
-| zustand          | ✅        |
-| lodash           | ✅        |
+| Library                             | Installed |
+| ----------------------------------- | --------- |
+| react-navigation                    | ✅        |
+| @react-native-community/geolocation | ✅        |
+| @tanstack/react-query               | ✅        |
+| zustand                             | ✅        |
+| react-native-mmkv                   | ✅        |
