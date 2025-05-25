@@ -1,10 +1,12 @@
 import Geolocation from '@react-native-community/geolocation';
 import {useEffect, useState} from 'react';
 import {TCoordinates} from '../dto';
+import {useWeatherStore} from '../store';
 
 export const useLocation = () => {
   const [location, setLocation] = useState<TCoordinates>();
   const [isRequestingPermissions, setIsRequestingPermissions] = useState(true);
+  const primaryLocation = useWeatherStore(store => store.primaryLocation);
 
   // Get/Set the current location
   useEffect(() => {
@@ -21,9 +23,10 @@ export const useLocation = () => {
       error => {
         setIsRequestingPermissions(false);
         console.log('Error getting location:', error);
+        primaryLocation && setLocation(primaryLocation);
       },
     );
-  }, []);
+  }, [primaryLocation]);
 
   return {
     isRequestingPermissions,
