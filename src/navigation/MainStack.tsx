@@ -1,7 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Home, Search, SearchDetails} from '../screens';
 import {ROUTES} from '../const';
-import {useLocation, useSplash} from '../hooks';
+import {useSplash} from '../hooks';
 import {TCoordinates} from '../dto';
 
 type TRouteKeys = (typeof ROUTES)[keyof typeof ROUTES];
@@ -15,7 +15,6 @@ export type TMainStackParamList = {
 const Stack = createNativeStackNavigator<TMainStackParamList>();
 
 export const MainStack = () => {
-  useLocation();
   useSplash();
 
   return (

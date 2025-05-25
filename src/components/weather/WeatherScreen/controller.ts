@@ -4,11 +4,11 @@ import {TWeatherDataCardProps} from '../';
 import {generateWeatherQueryKey, generateWeatherType} from '../../../helpers';
 import {colors} from '../../../tokens';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {useWeatherStore} from '../../../store';
 import {useRoute} from '@react-navigation/native';
 import {TSearchDetailsScreenProps} from '../../../screens/SearchDetails/types';
+import {TController} from './types';
 
-export const useController = () => {
+export const useController = (params: TController) => {
   const {top, bottom} = useSafeAreaInsets();
 
   // Route Params from Search Details screen
@@ -17,13 +17,8 @@ export const useController = () => {
   const routeParamLon = route.params?.lon;
   const routeParamCity = route.params?.city;
 
-  //Fallback to Home Screen Primary location
-  const location = useWeatherStore(store =>
-    store.locations.find(item => item.isPrimary),
-  );
-
-  const lat = routeParamLat || location?.lat;
-  const lon = routeParamLon || location?.lon;
+  const lat = routeParamLat || params?.lat; // Either Search location or Home device location
+  const lon = routeParamLon || params?.lon;
 
   const queryKey = routeParamCity
     ? [routeParamCity]
@@ -41,7 +36,6 @@ export const useController = () => {
     refetchOnMount: false,
     refetchOnWindowFocus: false,
   });
-  console.log('Weather Screen isLoading', isLoading);
 
   const gradientColors =
     colors.weatherColors[generateWeatherType(data?.current.main.id || 0)];
@@ -76,9 +70,10 @@ export const useController = () => {
     gradientColors,
     data,
     contentContainerStyle,
-    location,
     canGoToSearch,
     routeParamCity,
     queryKey,
+    lat,
+    lon,
   };
 };

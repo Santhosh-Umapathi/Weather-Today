@@ -13,17 +13,18 @@ import {TProps} from './types';
 import {GRADIENT_CONFIG} from '../../../config';
 import {NavBackButton} from '../../NavBackButton';
 
-export const WeatherScreen = ({}: TProps) => {
+export const WeatherScreen = (props: TProps) => {
   const {
     data,
     gradientColors,
     weatherData,
     contentContainerStyle,
-    location,
     canGoToSearch,
     routeParamCity,
     queryKey,
-  } = useController();
+    lat,
+    lon,
+  } = useController(props);
 
   return (
     <LinearGradient
@@ -49,7 +50,6 @@ export const WeatherScreen = ({}: TProps) => {
           {...{
             name: routeParamCity || data?.current.name,
             canGoToSearch,
-            showActions: !canGoToSearch,
           }}
         />
 
@@ -76,8 +76,8 @@ export const WeatherScreen = ({}: TProps) => {
 
         <WeatherDailySection
           {...{
-            lat: location?.lat,
-            lon: location?.lon,
+            lat,
+            lon,
             city: routeParamCity,
             queryKey,
           }}

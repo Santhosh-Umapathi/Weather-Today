@@ -1,6 +1,5 @@
-export type TProps = Partial<{
-  temperature: number;
-  weather: string;
-  id: number;
-  size?: number;
-}>;
+import {TCoordinates} from '../../../dto';
+
+export type TProps = Partial<TCoordinates>;
+
+export type TController = TProps;
