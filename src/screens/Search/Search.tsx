@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Keyboard, TouchableNativeFeedback, View} from 'react-native';
 import {TProps} from './types';
 import {styles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
@@ -14,18 +14,24 @@ export const Search = ({}: TProps) => {
     paddingTop,
     showRecentSearches,
     setShowRecentSearches,
+    handleOutsideClick,
   } = useController();
   return (
-    <LinearGradient
+    <TouchableNativeFeedback
+      touchSoundDisabled
       style={styles.container}
-      colors={gradientColors}
-      start={GRADIENT_CONFIG.start}
-      end={GRADIENT_CONFIG.end}>
-      <View style={[styles.searchContainer, {paddingTop}]}>
-        <NavBackButton />
-        <SearchBar {...{setShowRecentSearches}} />
-      </View>
-      {showRecentSearches ? <AutoSuggestions /> : <SearchList />}
-    </LinearGradient>
+      onPress={handleOutsideClick}>
+      <LinearGradient
+        style={styles.container}
+        colors={gradientColors}
+        start={GRADIENT_CONFIG.start}
+        end={GRADIENT_CONFIG.end}>
+        <View style={[styles.searchContainer, {paddingTop}]}>
+          <NavBackButton />
+          <SearchBar {...{setShowRecentSearches}} />
+        </View>
+        {showRecentSearches ? <AutoSuggestions /> : <SearchList />}
+      </LinearGradient>
+    </TouchableNativeFeedback>
   );
 };

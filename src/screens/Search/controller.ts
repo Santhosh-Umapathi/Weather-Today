@@ -4,6 +4,7 @@ import {colors} from '../../tokens';
 import {useState} from 'react';
 import {useRoute} from '@react-navigation/native';
 import {TSearchScreenProps} from './types';
+import {Keyboard} from 'react-native';
 
 export const useController = () => {
   const {top} = useSafeAreaInsets();
@@ -16,10 +17,16 @@ export const useController = () => {
   const gradientColors = colors.weatherColors[generateWeatherType(id)];
   const paddingTop = top + 24;
 
+  // Dismiss keyboard from clicking outside of Search Bar
+  const handleOutsideClick = () => {
+    Keyboard.dismiss();
+  };
+
   return {
     gradientColors,
     paddingTop,
     showRecentSearches,
     setShowRecentSearches,
+    handleOutsideClick,
   };
 };
