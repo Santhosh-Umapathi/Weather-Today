@@ -1,5 +1,7 @@
 # Weather Today
 
+![Display Shot](./assets//screenshots/App%20Screenshots/)
+
 - [GitHub Repo](https://github.com/Santhosh-Umapathi/Weather-Today)
 - [Figma prototype Design](https://www.figma.com/design/ab5lCYVJog2i6Gts5sWEht/Weather-Today?node-id=0-1&t=utth5dsjSRQhPMpH-1)
 
