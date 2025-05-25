@@ -22,6 +22,7 @@ export const WeatherScreen = ({}: TProps) => {
     location,
     canGoToSearch,
     routeParamCity,
+    queryKey,
   } = useController();
 
   return (
@@ -77,6 +78,8 @@ export const WeatherScreen = ({}: TProps) => {
           {...{
             lat: location?.lat,
             lon: location?.lon,
+            city: routeParamCity,
+            queryKey,
           }}
         />
       </ScrollView>

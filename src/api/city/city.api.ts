@@ -5,6 +5,7 @@ import {TCitiesBE} from './city.api.types';
 import {mapCitiesToDTO} from '../../dto';
 
 export const getCities = async () => {
+  console.log('get cities');
   try {
     const response = await axios.get(CITIES_URL, {
       headers: AXIOS_HEADERS,

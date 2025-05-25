@@ -15,6 +15,7 @@ export type TWeather = {
     icon: string;
     weather: string;
   };
+  coordinates: TCoordinates;
 };
 
 export type TForecast = {

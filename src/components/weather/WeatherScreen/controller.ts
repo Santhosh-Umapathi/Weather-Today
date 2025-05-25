@@ -36,9 +36,12 @@ export const useController = () => {
     enabled: routeParamCity ? true : !!(lat && lon),
     queryKey,
     queryFn: () => getFullWeather({lat, lon, city: routeParamCity}),
-    staleTime: 60000 * 5, // 5 mins
+    staleTime: 1000 * 60 * 5, // 5 mins
     gcTime: 60000 * 10, // 10 mins
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   });
+  console.log('Weather Screen isLoading', isLoading);
 
   const gradientColors =
     colors.weatherColors[generateWeatherType(data?.current.main.id || 0)];
@@ -76,5 +79,6 @@ export const useController = () => {
     location,
     canGoToSearch,
     routeParamCity,
+    queryKey,
   };
 };
