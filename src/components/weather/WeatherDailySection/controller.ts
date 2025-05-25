@@ -15,6 +15,10 @@ export const useController = ({lat, lon, city}: TController) => {
     enabled: city ? true : !!(lat && lon),
     queryKey,
     queryFn: () => getFullWeather({lat, lon, city}),
+    staleTime: 1000 * 60 * 5, // 5 mins
+    gcTime: 60000 * 10, // 10 mins
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
   });
 
   return {data};
