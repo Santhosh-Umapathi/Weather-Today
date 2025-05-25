@@ -16,7 +16,6 @@ export const actions = (set: TSet) =>
       }));
     },
     setPrimaryLocation: location => {
-      console.log('set primary');
       //Add/Remove primary location from storage
       if (location) {
         saveData('primaryLocation', location);
