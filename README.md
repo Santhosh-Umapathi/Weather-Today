@@ -1,11 +1,12 @@
 # Weather Today
 
-![Display Shot](./assets//screenshots/Display%20Shot.png)
+![Display Shot](./assets/screenshots/Display%20Shot.png)
+
+A simple bare react native project to access weather for any locations in the world
 
 - [GitHub Repo](https://github.com/Santhosh-Umapathi/Weather-Today)
 - [Figma prototype Design](https://www.figma.com/design/ab5lCYVJog2i6Gts5sWEht/Weather-Today?node-id=0-1&t=utth5dsjSRQhPMpH-1)
-
-A simple bare react native project to access weather for any locations in the world
+- [Screenshots](./assets/screenshots)
 
 ## Tech Stack
 
