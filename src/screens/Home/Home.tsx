@@ -8,7 +8,7 @@ export const Home = ({}: TProps) => {
   const {isRequestingPermissions, location} = useController();
 
   if (isRequestingPermissions) {
-    <ActivityIndicator />;
+    return <ActivityIndicator />;
   }
 
   if (!location) {
